@@ -22,14 +22,12 @@
         "name": "next"
       }
     ],
-    // --- RIGHE AGGIUNTE O MODIFICATE PER GLI ALIAS ---
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
-    // --- FINE RIGHE AGGIUNTE O MODIFICATE ---
     "strictNullChecks": true
   },
   "include": [
