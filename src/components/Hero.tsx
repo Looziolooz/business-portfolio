@@ -1,4 +1,3 @@
-// looziolooz/business-portfolio/business-portfolio-e6457846e498d415f13dce3e968ff9653ecdd45f/src/components/Hero.tsx
 
 "use client";
 
@@ -6,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { heroFeatures } from "@/config/site"; // Importa dati
-// CORREZIONE TS2307 & TS2305: Importa dal file corretto
+// CORREZIONE TS2307: Usa il path corretto per l'hook di scrolling
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"; 
 
 export function HeroSection() {

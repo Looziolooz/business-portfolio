@@ -1,7 +1,9 @@
+// looziolooz/business-portfolio/business-portfolio-e6457846e498d415f13dce3e968ff9653ecdd45f/src/components/ui/calendar.tsx (File Completo Corretto)
 
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
+import type { CustomComponents } from 'react-day-picker'; // Importa il tipo corretto
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
@@ -39,10 +41,13 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         day_hidden: 'invisible',
         ...classNames,
       }}
-      components={{
-        IconLeft: ({ className }) => <ChevronLeft className={className} />,
-        IconRight: ({ className }) => <ChevronRight className={className} />,
-      }}
+      components={
+        {
+            // Tenta IconPrevious/IconNext (i nomi corretti per shadcn/ui)
+            IconPrevious: ({ className }) => <ChevronLeft className={className} />,
+            IconNext: ({ className }) => <ChevronRight className={className} />,
+        } as Partial<CustomComponents> // Asserzione di tipo per forzare il compilatore
+      }
       {...props}
     />
   );

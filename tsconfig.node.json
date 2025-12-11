@@ -1,0 +1,27 @@
+// tsconfig.node.json
+{
+  // Estende la configurazione base
+  "extends": "./tsconfig.json", 
+  "compilerOptions": {
+    // Rendiamo espliciti i moduli e la risoluzione per l'ambiente Node/Config files
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    
+    // Questi flag sono essenziali per risolvere TS1259
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "composite": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "tailwind.config.ts", 
+    "next.config.ts" 
+    // Includi tutti i file di configurazione di alto livello
+  ],
+  "exclude": [
+    "src" // Evita conflitti con i file gestiti da tsconfig.app.json
+  ]
+}

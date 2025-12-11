@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from "tailwindcss-animate";
-import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
+import tailwindcssAnimate from "tailwindcss-animate"; // Corretto
+import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio"; // Corretto
 
 export default {
   darkMode: ["class"],
@@ -89,5 +89,5 @@ export default {
       },
     },
   },
-  plugins: [tailwindcssAnimate, tailwindcssAspectRatio],
+plugins: [tailwindcssAnimate, tailwindcssAspectRatio],
 } satisfies Config;
