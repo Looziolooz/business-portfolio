@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const montserrat = Montserrat({ 
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Lorenzo Dastoli - Soluzioni Gestionali per Aziende",
@@ -21,11 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it" className="scroll-smooth">
-      <body className="antialiased"
-      cz-shortcut-listen="true">
+    <html lang="it" className={`${inter.variable} ${montserrat.variable} scroll-smooth`}>
+      <body className="font-sans antialiased min-h-screen flex flex-col">
         <Navbar />
-        <main className="min-h-screen">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />
