@@ -1,5 +1,6 @@
+
 import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
+import HeroSection from '@/components/Hero'; // AGGIORNATO: usa il nome della funzione esportata di default
 import About from '@/components/About';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
@@ -10,7 +11,7 @@ export default function Index() {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <Hero />
+      <HeroSection /> {/* AGGIORNATO: usa il nome HeroSection */}
       <About />
       <Services />
       <Portfolio />

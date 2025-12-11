@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
@@ -39,8 +40,8 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         ...classNames,
       }}
       components={{
-        IconPrevious: ({ className }) => <ChevronLeft className={className} />,
-        IconNext: ({ className }) => <ChevronRight className={className} />,
+        IconLeft: ({ className }) => <ChevronLeft className={className} />,
+        IconRight: ({ className }) => <ChevronRight className={className} />,
       }}
       {...props}
     />
