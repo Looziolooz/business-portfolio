@@ -2,23 +2,41 @@
 
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from "lucide-react";
-import { useState } from "react";
-import { useScrollToSection } from "@/hooks/use-scroll-to-section"; // Importa Custom Hook
+import { useState, useEffect } from "react"; // Importato useEffect
+import { useScrollToSection } from "@/hooks/use-scroll-to-section";
 
 export function ContactSection() {
     const handleScrollToSection = useScrollToSection();
+    
+    // 1. Inizializzazione sicura dello stato: plan è inizializzato a ""
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         phone: "",
         company: "",
-        plan: localStorage.getItem("selectedPlan") || "", // Pre-fill from pricing
+        plan: "", // SAFE: Inizializzato a stringa vuota per SSR
         message: "",
     });
 
+    // 2. Uso di useEffect per leggere localStorage solo al mount del componente (client-side)
+    useEffect(() => {
+        // Controllo esplicito per ambienti client-side (best practice)
+        if (typeof window !== 'undefined' && window.localStorage) {
+            const selectedPlan = localStorage.getItem("selectedPlan");
+            if (selectedPlan) {
+                setFormData(prev => ({
+                    ...prev,
+                    plan: selectedPlan,
+                }));
+                // Pulisci subito il valore in localStorage
+                localStorage.removeItem("selectedPlan"); 
+            }
+        }
+    }, []); // Eseguito solo una volta al mount
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
@@ -34,16 +52,17 @@ export function ContactSection() {
         setTimeout(() => {
             setIsSubmitting(false);
             setSubmitStatus("success");
+            
+            // Reset form data after successful submission
             setFormData({
                 name: "",
                 email: "",
                 phone: "",
                 company: "",
-                plan: "",
+                plan: "", // Reset a vuoto
                 message: "",
             });
-            localStorage.removeItem("selectedPlan"); // Clean up pre-filled plan
-
+            
             // Reset status after 5 seconds
             setTimeout(() => {
                 setSubmitStatus("idle");

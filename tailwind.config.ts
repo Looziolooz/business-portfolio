@@ -2,12 +2,10 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  // Configurazione dei percorsi dei file che utilizzano Tailwind
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    // Ho rimosso './**/*.md' che non è presente nel template iniziale
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
