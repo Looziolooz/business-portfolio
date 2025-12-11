@@ -1,5 +1,5 @@
-import { Toaster } from "./components/ui/sonner";
-import { TooltipProvider } from '@/components/ui/tooltip';
+import { Toaster } from './components/ui/sonner'; // Già corretto da te
+import { TooltipProvider } from './components/ui/tooltip'; // CORRETTO: Da @/ a ./
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/index';
