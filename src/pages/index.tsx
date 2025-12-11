@@ -1,5 +1,5 @@
 
-import Navigation from '@/components/Navigation'
+import Navigation from '@/components/Navigation';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <HeroSection /> {/* AGGIORNATO: usa il nome HeroSection */}
+      <HeroSection /> 
       <About />
       <Services />
       <Portfolio />
