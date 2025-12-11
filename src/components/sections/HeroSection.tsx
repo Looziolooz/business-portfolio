@@ -1,41 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Zap, Shield } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
+import { heroFeatures } from "@/config/site"; // Importa dati
+import { useScrollToSection } from "@/hooks/use-scroll-to-section"; // Importa Custom Hook
 
 export function HeroSection() {
-  const handleScrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const handleScrollToSection = useScrollToSection();
 
-  const handleScrollToPricing = () => {
-    const element = document.querySelector("#pricing");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const features = [
-    {
-      icon: Zap,
-      text: "Setup Rapido",
-      description: "Operativo in 48 ore"
-    },
-    {
-      icon: Shield,
-      text: "Sicuro & Affidabile",
-      description: "Dati protetti"
-    },
-    {
-      icon: Sparkles,
-      text: "Supporto Incluso",
-      description: "Assistenza dedicata"
-    }
-  ];
+  // CTA handlers
+  const handleScrollToContact = () => handleScrollToSection("#contact");
+  const handleScrollToPricing = () => handleScrollToSection("#pricing");
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-gray-50 to-primary-50">
@@ -141,7 +117,7 @@ export function HeroSection() {
               transition={{ delay: 0.6 }}
               className="grid grid-cols-1 sm:grid-cols-3 gap-6"
             >
-              {features.map((feature, index) => (
+              {heroFeatures.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}

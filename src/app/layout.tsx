@@ -35,7 +35,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it" className={`${inter.variable} ${montserrat.variable} scroll-smooth`}>
-      <body className="font-sans antialiased min-h-screen flex flex-col">
+      <body className="font-sans antialiased min-h-screen flex flex-col"
+       cz-shortcut-listen="true">
         <Navbar />
         <main className="flex-grow">
           {children}

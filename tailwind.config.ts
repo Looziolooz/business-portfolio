@@ -1,103 +1,37 @@
-import type { Config } from "tailwindcss";
+// 📄 File: tailwind.config.ts
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  // Configurazione dei percorsi dei file che utilizzano Tailwind
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    // Ho rimosso './**/*.md' che non è presente nel template iniziale
   ],
   theme: {
     extend: {
       colors: {
+        // Mappa i colori custom (primary, accent, secondary) definiti in globals.css
         primary: {
-          50: '#fef6f2',
-          100: '#fde9e0',
-          200: '#fbd1c1',
-          300: '#f7af97',
-          400: '#f28467',
-          500: '#ea5e3f',
-          600: '#d84428',
-          700: '#b5341e',
-          800: '#952e1d',
-          900: '#7b2b1f',
-          950: '#43130c',
-        },
-        secondary: {
-          50: '#f8f9fa',
-          100: '#eef1f4',
-          200: '#d9e1e7',
-          300: '#b8c7d3',
-          400: '#91a7ba',
-          500: '#748ca4',
-          600: '#5f7389',
-          700: '#4e5e6f',
-          800: '#44505d',
-          900: '#3c444f',
-          950: '#282c34',
+          50: '#f8f9fa', // Supposto per --color-bg-alt o un tono molto chiaro
+          100: 'var(--color-bg-alt)', // Usato in HeroSection
+          200: '#fbc5be', // Tono medio-chiaro per sfumature
+          400: '#f57a69', // Tono medio
+          500: '#ea5e3f', // Corrisponde a --color-primary
+          600: '#d84428', // Corrisponde a --color-primary-dark
+          700: '#b5341e', // Tono scuro
         },
         accent: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
-          950: '#052e16',
+          50: '#f8f9fa', // Supposto per sfondi molto chiari (Pricing, Testimonials)
+          100: '#dcfce7', // Usato in TestimonialsSection
+          200: '#bbf7d0', // Usato in HeroSection
+          500: '#22c55e', // Corrisponde a --color-accent
+          700: '#15803d', // Usato in TestimonialsSection
         },
-      },
-      fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.6s ease-in-out',
-        'fade-in-up': 'fadeInUp 0.6s ease-out',
-        'fade-in-down': 'fadeInDown 0.6s ease-out',
-        'slide-in-left': 'slideInLeft 0.6s ease-out',
-        'slide-in-right': 'slideInRight 0.6s ease-out',
-        'scale-in': 'scaleIn 0.5s ease-out',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeInDown: {
-          '0%': { opacity: '0', transform: 'translateY(-20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        slideInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-50px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        slideInRight: {
-          '0%': { opacity: '0', transform: 'translateX(50px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.9)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        glow: {
-          '0%': { boxShadow: '0 0 5px rgba(234, 94, 63, 0.5), 0 0 10px rgba(234, 94, 63, 0.3)' },
-          '100%': { boxShadow: '0 0 20px rgba(234, 94, 63, 0.8), 0 0 40px rgba(234, 94, 63, 0.4)' },
-        },
+        secondary: {
+          900: '#1a1a1a', // Tono scuro per il footer (Ho usato un tono scuro da globals.css, ma in Footer.tsx viene usato bg-secondary-900. Ho scelto il colore più scuro di globals.css)
+        }
       },
     },
   },

@@ -3,16 +3,12 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import { navItems } from "@/config/site"; // Importa dati
+import { useScrollToSection } from "@/hooks/use-scroll-to-section"; // Importa Custom Hook
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const handleNavClick = useScrollToSection(); // Usa Custom Hook
 
   return (
     <footer className="bg-secondary-900 text-white">
@@ -68,16 +64,16 @@ export function Footer() {
           >
             <h4 className="text-lg font-semibold mb-4">Link Rapidi</h4>
             <ul className="space-y-2">
-              {["Home", "Servizi", "Abbonamenti", "Portfolio", "Chi Sono"].map(
+              {navItems.map( // Usa navItems da config
                 (item) => (
-                  <li key={item}>
+                  <li key={item.href}>
                     <button
                       onClick={() =>
-                        handleNavClick(`#${item.toLowerCase().replace(" ", "")}`)
+                        handleNavClick(item.href) // Usa Custom Hook
                       }
                       className="text-gray-300 hover:text-white transition-colors"
                     >
-                      {item}
+                      {item.label}
                     </button>
                   </li>
                 )

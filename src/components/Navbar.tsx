@@ -4,19 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Code2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Servizi", href: "#services" },
-  { label: "Abbonamenti", href: "#pricing" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Chi Sono", href: "#about" },
-  { label: "Contatti", href: "#contact" },
-];
+import { navItems } from "@/config/site"; // Importa da config centralizzata
+import { useScrollToSection } from "@/hooks/use-scroll-to-section"; // Importa Custom Hook
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const handleScrollToSection = useScrollToSection(); // Usa Custom Hook
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,10 +23,7 @@ export function Navbar() {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    handleScrollToSection(href);
   };
 
   return (
